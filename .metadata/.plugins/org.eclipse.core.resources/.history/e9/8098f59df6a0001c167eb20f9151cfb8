@@ -1,0 +1,22 @@
+package IBMFramework.Restapi_project;
+
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+
+public class API {
+	
+	@Test
+	public void testcase1() {
+		
+		Response res=RestAssured.get("http://localhost:3000/training");
+		String responsebody=res.asString();
+		//System.out.println("responsebody");
+		System.out.println(res.getStatusCode());
+		System.out.println(res.getStatusLine());
+		
+		
+	}
+
+}

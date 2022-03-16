@@ -1,0 +1,30 @@
+package IBMFramework.Restapi_project;
+
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+
+public class API {
+	
+	@Test
+	public void testcase1() {
+		
+		Response res=RestAssured.get("http://localhost:3000/training");
+		String responsebody=res.asString();
+		//System.out.println("responsebody");
+		System.out.println(res.getStatusCode());
+		System.out.println(res.getStatusLine());
+		System.out.println(res.getHeaders());
+		System.out.println(res.jsonPath().getString("body"));
+		
+	}
+
+	
+	@Test
+	public void tetcase2() {
+		RestAssured.baseURI="http://localhost:3000";
+		//RestAssured.given().get("/training").then().statusCode(200).log().all();
+		RestAssured.given().get("/training").then().statusCode(201).log().all();
+	}
+}

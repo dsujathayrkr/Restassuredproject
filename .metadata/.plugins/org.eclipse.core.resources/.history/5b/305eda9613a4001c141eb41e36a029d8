@@ -1,0 +1,23 @@
+package IBMFramework.Restapi_project;
+
+import org.testng.annotations.Test;
+
+import Pojo.pojoclass;
+
+public class Pojo {
+	
+	
+	
+	@Test
+	public void pojoexample() {
+		
+	pojoclass pojoobject=new pojoclass();
+	pojoobject.setAddress("xylane");
+	pojoobject.setCity("Bangalore");
+	pojoobject.setEmployeename("sujatha");
+	
+	System.out.println(pojoobject.getAddress());
+	System.out.println(pojoobject.getCity());
+	System.out.println(pojoobject.getEmployeename());
+}
+}

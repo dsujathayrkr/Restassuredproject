@@ -1,0 +1,55 @@
+package Pojo;
+
+import org.testng.annotations.Test;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+
+public class userclass {
+	
+
+	@Test(priority=2)
+	public void Createuser() throws Throwable {
+		
+		Newpojoproject object=new Newpojoproject();
+		object.setUsername("name12");
+		object.setFirstname("user12");		
+		object.setLastname("last12");
+		object.setPassword("password123");
+		object.setEmail("test12@email.com");
+		object.setPhoneno("1234789");
+	
+	System.out.println(object.getUsername());
+	System.out.println(object.getFirstname());
+	System.out.println(object.getLastname());
+	System.out.println(object.getPassword());
+	System.out.println(object.getEmail());
+	System.out.println(object.getPhoneno());
+	
+	ObjectMapper obj=new ObjectMapper();
+	
+	String body= obj.writerWithDefaultPrettyPrinter().writeValueAsString(object);
+	System.out.println(body);
+	
+	
+	RestAssured.baseURI="https://petstore.swagger.io/v2/user";
+	RestAssured.given().contentType(ContentType.JSON).body(body).when().post("/training").then().statusCode(201).log().all();
+	
+	  System.out.println(body);
+	}
+	  @Test(enabled=false)
+		public void login(){
+	  
+	  {
+			RestAssured.baseURI="https://petstore.swagger.io/v2/";
+			RestAssured.given().get("/user/login").then().statusCode(200).log().all();
+		RestAssured.given().contentType(ContentType.JSON).queryParam("username", "abcd").queryParam("password", "abc123").when().get("/user/login").then().statusCode(200).log().all();
+		RestAssured.given().contentType(ContentType.JSON).queryParam("username", "cdef").queryParam("password", "scd123").when().get("/user/login").then().statusCode(200).log().all();
+
+	}
+	  
+}
+
+}

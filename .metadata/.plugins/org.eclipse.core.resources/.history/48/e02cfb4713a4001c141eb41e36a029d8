@@ -1,0 +1,14 @@
+package IBMFramework.Restapi_project;
+
+import org.testng.annotations.Test;
+
+import Pojo.pojoclass;
+
+
+@Test
+public class Pojo {
+	
+	
+	pojoclass pojo=new pojoclass();
+	
+}

@@ -1,0 +1,50 @@
+package Pojo;
+
+import org.testng.annotations.Test;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+
+public class userclass {
+	
+
+	@Test
+	public void User() throws Throwable {
+		
+		Newpojoproject object=new Newpojoproject();
+object.setUsername("username");
+object.setFirstname("user");		
+object.setLastname("lastname");
+object.setPassword("password");
+object.setEmail("test@email.com");
+object.setPhoneno("12345");
+	
+	System.out.println();
+	System.out.println();
+	System.out.println();
+	
+	ObjectMapper obj=new ObjectMapper();
+	
+	String body= obj.writerWithDefaultPrettyPrinter().writeValueAsString(object);
+	System.out.println(body);
+	
+	
+	RestAssured.baseURI="https://petstore.swagger.io/v2/user";
+	RestAssured.given().contentType(ContentType.JSON).body(body).when().post("/training").then().statusCode(200).log().all();
+	
+	  System.out.println(body);
+}
+	@Test
+	public void post(){
+	  RestAssured.baseURI  = "https://petstore.swagger.io/v2/user"; 
+	  Response res = RestAssured.given()
+	     .contentType("application/json")
+	     .body("{\"name\":\"Onur Baskirt\"}")
+	     .when()
+	     .post("");
+	  String body = res.getBody().asString();
+	  System.out.println(body);
+	}
+}

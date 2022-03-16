@@ -1,0 +1,9 @@
+package Pojo;
+
+public class pojoclass {
+	
+	private String employeename;
+	private String address;
+	private String city;
+
+}

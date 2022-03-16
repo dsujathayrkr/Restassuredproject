@@ -1,0 +1,31 @@
+package IBMFramework.Restapi_project;
+
+import org.testng.annotations.Test;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import Pojo.pojoclass;
+
+public class Pojo {
+	
+	
+	
+	@Test
+	public void pojoexample() throws Throwable {
+		
+	pojoclass pojoobject=new pojoclass();
+	pojoobject.setAddress("xylane");
+	pojoobject.setCity("Bangalore");
+	pojoobject.setEmployeename("sujatha");
+	
+	System.out.println(pojoobject.getAddress());
+	System.out.println(pojoobject.getCity());
+	System.out.println(pojoobject.getEmployeename());
+	
+	ObjectMapper obj=new ObjectMapper();
+	
+	String body= obj.writerWithDefaultPrettyPrinter().writeValueAsString(pojoobject);
+	System.out.println(body);
+}
+}
